@@ -10,7 +10,7 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/guideline"
-            app:layout_constraintGuide_percent="0.5"/>
+            app:layout_constraintGuide_percent="0.4"/>
     <fragment
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -20,12 +20,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/guideline" tools:layout="@layout/fragment_color_selection"/>
-    <fragment
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/bottom_navigationview"
+            app:layout_constraintBottom_toBottomOf="parent" app:menu="@menu/bottom_menu"
+            android:background="#08304FFE"/>
+    <FrameLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:name="br.programacaodinamica.cromessages.fragments.SeekBarControlFragment"
-            android:id="@+id/control_fragment"
-            app:layout_constraintTop_toTopOf="@+id/guideline" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" tools:layout="@layout/fragment_seek_bar_control"/>
+            app:layout_constraintTop_toBottomOf="@+id/viewer_fragment" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigationview" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/control_container">
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

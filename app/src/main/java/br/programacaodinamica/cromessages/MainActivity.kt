@@ -1,18 +1,22 @@
 package br.programacaodinamica.cromessages
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.SeekBar
-import kotlinx.android.synthetic.main.fragment_color_selection.*
-import kotlinx.android.synthetic.main.fragment_seek_bar_control.*
+import androidx.fragment.app.Fragment
+import br.programacaodinamica.cromessages.fragments.SeekBarControlFragment
+import br.programacaodinamica.cromessages.fragments.TextControlFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     // falta sincronização dos dados e interface
     private var red = 100
     private var green = 100
     private var blue = 100
+    private val fragmentsMap = mapOf(
+        Pair(R.id.text_menu_item, TextControlFragment()),
+        Pair(R.id.bars_menu_item, SeekBarControlFragment())
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,25 +25,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpListeners(){
-        val seekBarChangeListener = object : SeekBar.OnSeekBarChangeListener{
-            override fun onProgressChanged(seekBar: SeekBar?, value: Int, fromUser: Boolean) {
-                if(fromUser){
-                    when(seekBar?.id){
-                        red_seekbar.id -> red = value
-                        green_seekbar.id -> green = value
-                        blue_seekbar.id -> blue = value
-                    }
-                    // atualizar a interface; apropriado?
-                    dec_code_textview.text = "($red, $green, $blue)"
-                    color_card.setCardBackgroundColor(Color.rgb(red, green, blue))
-                }
-            }
 
-            override fun onStartTrackingTouch(p0: SeekBar?) {}
-            override fun onStopTrackingTouch(p0: SeekBar?) {}
+        bottom_navigationview.setOnNavigationItemSelectedListener {
+            val fragment = fragmentsMap[it.itemId]
+            fragment?.replaceOn(R.id.control_container)
+            true
         }
-        red_seekbar.setOnSeekBarChangeListener(seekBarChangeListener)
-        green_seekbar.setOnSeekBarChangeListener(seekBarChangeListener)
-        blue_seekbar.setOnSeekBarChangeListener(seekBarChangeListener)
+        bottom_navigationview.selectedItemId = R.id.text_menu_item
+    }
+
+    private fun Fragment.replaceOn(containerId: Int){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(containerId, this)
+        transaction.commit()
     }
 }
