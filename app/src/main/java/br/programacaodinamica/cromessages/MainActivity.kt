@@ -4,7 +4,8 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SeekBar
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_color_selection.*
+import kotlinx.android.synthetic.main.fragment_seek_bar_control.*
 
 class MainActivity : AppCompatActivity() {
 
