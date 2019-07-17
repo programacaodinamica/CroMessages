@@ -15,10 +15,11 @@ class ColorViewModel: ViewModel(){
             field = value
             color.value = Color.rgb(red, value, blue)
         }
-    var blue = 0
+    var blue = 20
         set(value) {
             field = value
             color.value = Color.rgb(red, green, value)
         }
-    var color = MutableLiveData<Int>().apply { value = Color.rgb(red, green, blue) }
+    val color = MutableLiveData<Int>().apply { value = Color.rgb(red, green, blue) }
+    val selectedFragment = MutableLiveData<Int>().apply { value = R.id.text_menu_item }
 }

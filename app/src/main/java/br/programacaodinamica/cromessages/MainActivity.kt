@@ -13,10 +13,7 @@ import kotlinx.android.synthetic.main.fragment_color_selection.*
 
 class MainActivity : AppCompatActivity(){
 
-    // falta sincronização dos dados e interface
-    private var red = 100
-    private var green = 100
-    private var blue = 100
+
     private lateinit var colorViewModel: ColorViewModel
     private val fragmentsMap = mapOf(
         Pair(R.id.text_menu_item, TextControlFragment()),
@@ -32,19 +29,17 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun setUpListeners(){
-
         bottom_navigationview.setOnNavigationItemSelectedListener {
-            val fragment = fragmentsMap[it.itemId]
-            fragment?.replaceOn(R.id.control_container)
+            colorViewModel.selectedFragment.value = it.itemId
             true
         }
-        bottom_navigationview.selectedItemId = R.id.text_menu_item
     }
 
     private fun subscribe(){
-    colorViewModel.color.observe(this, Observer {
-        color_card.setCardBackgroundColor(it)
-    })
+        colorViewModel.selectedFragment.observe(this, Observer {
+            val fragment = fragmentsMap[it]
+            fragment?.replaceOn(R.id.control_container)
+        })
 
     }
 
