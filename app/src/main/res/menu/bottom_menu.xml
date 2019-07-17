@@ -8,4 +8,6 @@
     <item
             android:title="Barras"
             android:icon="@drawable/ic_format_list_numbered_black_24dp" android:id="@+id/bars_menu_item"/>
+    <item android:title="Favoritas"
+          android:icon="@drawable/ic_favorite_black_24dp" android:id="@+id/fav_menu_item"/>
 </menu>

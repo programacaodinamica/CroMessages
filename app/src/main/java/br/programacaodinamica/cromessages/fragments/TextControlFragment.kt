@@ -10,10 +10,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.view.inputmethod.EditorInfo
-import br.programacaodinamica.cromessages.ColorViewModel
-import br.programacaodinamica.cromessages.R
-import br.programacaodinamica.cromessages.isValidHexCode
-import br.programacaodinamica.cromessages.on
+import br.programacaodinamica.cromessages.*
 import kotlinx.android.synthetic.main.fragment_text_control.*
 
 
@@ -45,7 +42,7 @@ class TextControlFragment : Fragment() {
 
     private fun subscribe(){
         colorViewModel.color.observe(this, Observer {colorInt->
-            val hexColor = String.format("%06X", 0xFFFFFF and colorInt)
+            val hexColor = colorInt.toHexCode()
             hex_edittext.setText(hexColor)
         })
     }

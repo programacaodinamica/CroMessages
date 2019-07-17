@@ -34,3 +34,5 @@ fun EditText.on(actionId: Int, action:()->Unit){
         }
     }
 }
+
+fun Int.toHexCode() = String.format("%06X", 0xFFFFFF and this)
