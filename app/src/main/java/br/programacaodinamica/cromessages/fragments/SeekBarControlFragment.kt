@@ -40,8 +40,13 @@ class SeekBarControlFragment : Fragment() {
     }
     private fun subscribe(){
         colorViewModel.color.observe(this, Observer {
-            // atualizar a interface; apropriado?
-            dec_code_textview.text = "(${Color.red(it)}, ${Color.green(it)}, ${Color.blue(it)})"
+            val red = Color.red(it)
+            val green = Color.green(it)
+            val blue = Color.blue(it)
+            dec_code_textview.text = "($red, $green, $blue)"
+            red_seekbar.progress = red
+            green_seekbar.progress = green
+            blue_seekbar.progress = blue
         })
     }
 
