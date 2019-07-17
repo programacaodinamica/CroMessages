@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="invalid_color_string">Cor inválida</string>
+    <string name="hex_color_code_string">HEX color code</string>
+    <string name="hex_hint_string">#hex</string>
+    <string name="fill_color_button_string">Fill color button</string>
 </resources>

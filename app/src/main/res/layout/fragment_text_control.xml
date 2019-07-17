@@ -10,24 +10,35 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HEX color code"
+            android:text="@string/hex_color_code_string"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/hex_code_textview"
-            app:layout_constraintBottom_toTopOf="@+id/editText"
+            app:layout_constraintBottom_toTopOf="@+id/hex_edittext"
             app:layout_constraintVertical_chainStyle="packed"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            android:layout_marginBottom="24dp"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textCapCharacters"
-            android:digits="0123456789ABCDEF"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/hex_edittext"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toBottomOf="@+id/hex_code_textview"
             android:layout_marginTop="8dp" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp" android:hint="#hex"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:hint="@string/hex_hint_string"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/fill_button"
+            app:layout_constraintHorizontal_chainStyle="packed" android:imeOptions="actionDone"/>
+    <ImageButton
+            android:src="@drawable/ic_format_color_fill_black_48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fill_button"
+            app:layout_constraintStart_toEndOf="@+id/hex_edittext" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/hex_edittext" app:layout_constraintBottom_toBottomOf="@+id/hex_edittext"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:contentDescription="@string/fill_color_button_string"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
